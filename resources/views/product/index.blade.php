@@ -54,33 +54,47 @@
     </div>
     <div class="container-fluid">
         @include('layouts.feedback')
-        <div class="row">
+        <div class="row pb-3">
             @if(auth()->user()->role == 'owner')
                 <div class="col-3">
-                    <form action="{{ @$product ? route('products.update', $product) : route('products.store') }}" method="POST">
+                    <form action="{{ @$product ? route('products.update', $product) : route('products.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         {{ @$product ? method_field('PUT') : '' }}
                         <p class="font-weight-bold">{{ @$product ? 'Edit' : 'Tambah' }} Produk</p>
                         <div class="form-group">
                             <label for="code">Kode Produk</label>
                             <input type="text" class="form-control" id="code" name="code" placeholder="Kode produk" autofocus value="{{ @$product ? $product->code : '' }}">
+                            <small class="text-muted">ex. GA-123, B-100</small>
                         </div>
                         <div class="form-group">
                             <label for="name">Nama</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="Nama produk" autofocus value="{{ @$product ? $product->name : '' }}">
+                        </div>                    
+                        <div class="form-group">
+                            @if(@$product)
+                                <img src="{{ asset($product->image) }}" alt="{{ $product->code }}" class="img-fluid w-50">
+                                <br> <br>
+                            @endif
+                            <label for="image">{{ @$product ? 'Edit' : '' }} Gambar</label>
+                            <input type="file" id="image" name="image">
+                        </div>                           
+                        <div class="form-group">
+                            <label for="description">Deskripsi</label>
+                            <textarea name="description" id="description" rows="8" class="form-control" placeholder="Deskripsi">{{ @$product ? $product->description : '' }}</textarea>
+                            {{-- <input type="text" class="form-control" id="name" name="name" placeholder="Nama produk" autofocus value="{{ @$product ? $product->name : '' }}"> --}}
                         </div>
                         <div class="form-group">
                             <label for="price">Harga Produk</label>
                             <input type="text" class="form-control input-number col-7" id="price" name="price" placeholder="Harga produk" autofocus value="{{ @$product ? $product->price : '' }}" min="1">
                             <small class="text-muted">Minimum Rp100</small>
-                        </div>
+                        </div>           
                         <div class="form-group">
                             <label for="categories">Kategori</label> <br>
-                            <select class="form-control select2" name="category" id="categories">
+                            <select class="form-control select2" name="category_id" id="categories">
                                 <option value="" selected disabled>- Pilih Kategori -</option>
                                 @foreach($categories as $category)
-                                    <option value="{{ $category }}" {{ @$product->category == $category ? 'selected' : '' }}>
-                                        {{ $category }}
+                                    <option value="{{ $category->id }}" {{ @$product->category_id == $category->id ? 'selected' : '' }}>
+                                        {{ $category->name }}
                                     </option>
                                 @endforeach
                             </select>
@@ -102,6 +116,7 @@
                             <thead>
                                 <tr role="row">
                                     <th class="sorting_asc" tabindex="0" aria-controls="tb-no-locked" aria-label="No: activate to sort column descending">No</th>
+                                    <th class="sorting_asc" tabindex="0" aria-controls="tb-no-locked" aria-label="Nama: activate to sort column descending"></th>
                                     <th class="sorting_asc" tabindex="0" aria-controls="tb-no-locked" aria-label="Nama: activate to sort column descending">Nama</th>
                                     <th class="sorting" tabindex="0" aria-controls="tb-no-locked" aria-label="Harga: activate to sort column ascending">Harga</th>
                                     <th class="sorting" tabindex="0" aria-controls="tb-no-locked" aria-label="Kategori: activate to sort column ascending">Kategori</th>
@@ -115,13 +130,14 @@
                                 @foreach($products as $product)
                                     <tr role="row">
                                         <td>{{ $loop->iteration }}</td>
+                                        <td><img src="{{ asset($product->image) }}" alt="{{ $product->code }}" class="img-fluid w-25"></td>
                                         <td>{{ $product->code }} - {{ $product->name }}</td>
                                         <td>Rp {{ number_format($product->price, 0, ',', '.') }}</td>
-                                        <td>{{ $product->category }}</td>
+                                        <td>{{ $product->category->name }}</td>
                                         @if(Auth::user()->role == 'owner')
                                             <td>
-                                                <a href="{{ url('products/'.$product->id) }}" class="text-primary mr-3">Stok</a>
-                                                <a href="{{ url('products?product_id='.$product->id) }}" class="text-info mr-3">Edit</a>
+                                                <a href="{{ url('admin/products/'.$product->id) }}" class="text-primary mr-3">Stok</a>
+                                                <a href="{{ url('admin/products?product_id='.$product->id) }}" class="text-info mr-3">Edit</a>
                                                 {{-- <a href="#" class="text-danger btnDelete">
                                             Hapus
                                         </a>

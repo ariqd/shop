@@ -3,11 +3,11 @@
     <div class="tb-main-header">
         <div class="tb-main-header-in">
             <div class="tb-main-header-left">
-                <a href="{{ url('/') }}" class="tb-logo-link tb-light-logo">
-                    <img src="{{ asset('') }}/img/logo2.png" style="width:40%" alt="logo-light" />
+                <a href="{{ url('/dashboard') }}" class="tb-logo-link tb-light-logo">
+                    <img src="{{ asset('img/logo2.png') }}" style="width:40%" alt="logo-light" />
                 </a>
-                <a href="{{ url('/') }}" class="tb-logo-link tb-dark-logo">
-                    <img src="{{ asset('') }}/img/logo2.png" style="width:40%" alt="logo-dark" />
+                <a href="{{ url('/dashboard') }}" class="tb-logo-link tb-dark-logo">
+                    <img src="{{ asset('img/logo2.png') }}" style="width:40%" alt="logo-dark" />
                 </a>
             </div>
             <div class="tb-main-header-right">

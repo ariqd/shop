@@ -58,7 +58,7 @@
     <div class="tb-padd-lr-30 tb-uikits-heading mb-3 mt-2 justify-content-between">
         <div class="d-flex align-items-center">
             <h2 class="tb-uikits-title">Stok {{ $product->code }} {{ $product->name }}</h2>
-            <a href="{{ url('products') }}" class="btn btn-secondary btn-sm">ke Daftar Produk</a>
+            <a href="{{ url('admin/products') }}" class="btn btn-secondary btn-sm">ke Daftar Produk</a>
         </div>
         <div class="d-flex">
             <div class="ml-3">
@@ -90,7 +90,7 @@
                             <div class="form-row align-items-center">
                                 <div class="col-2">
                                     <h5>{{ $color['color'] }}</h5>
-                                    <a href="{{ url('products/'.$product->id.'?edit='.$color['color']) }}" class="text-info">Edit</a>
+                                    <a href="{{ url('admin/products/'.$product->id.'?edit='.$color['color']) }}" class="text-info">Edit</a>
                                 </div>
                                 @foreach($sizes as $size)
                                     @php

@@ -1,5 +1,5 @@
 <h5>Tambah Stok</h5>
-<form action="{{ route('stocks.store') }}" method="POST">
+<form action="{{ route('stocks.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="product_id" value="{{ $product->id }}">
     <div class="form-group form-row">
@@ -8,6 +8,12 @@
             <input type="text" class="form-control" name="color" id="color" placeholder="Nama Warna" value="{{ old('color') }}">
         </div>
     </div>
+    {{-- <div class="form-group form-row">
+        <label for="image" class="col-form-label col-4">Gambar</label>
+        <div class="col-8">
+            <input type="file" name="image" id="image" value="{{ old('image') }}">
+        </div>
+    </div> --}}
     <div class="form-group form-row">
         <label for="size_xs" class="col-form-label col-4">Qty XS</label>
         <div class="col-4">

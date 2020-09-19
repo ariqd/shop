@@ -2,11 +2,17 @@
 
 Auth::routes();
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('/', 'HomeController@index')->name('home');
+Route::group(['namespace' => 'Customer', 'name' => 'front.'], function () {
+    Route::get('/', 'HomeController@index');
+    Route::get('/{slug?}', 'ProductsController@index');
+    Route::get('/detail/{slug?}', 'ProductsController@show');
+});
 
-    Route::resource('customers', 'CustomersController');
-    Route::get('customers/search-cities/{id}', 'CustomersController@searchCities');
+Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
+    Route::get('/dashboard', 'HomeController@index')->name('home');
+
+    // Route::resource('customers', 'CustomersController');
+    // Route::get('customers/search-cities/{id}', 'CustomersController@searchCities');
 
     Route::resource('products', 'ProductsController');
     Route::put('products/update-stock/{product}', 'ProductsController@updateStock')->name('products.update.stock');
@@ -33,6 +39,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('settings', 'SettingsController@index')->name('setting.index');
     Route::post('settings', 'SettingsController@update')->name('setting.update');
+
+    Route::resource('categories', 'CategoryController');
 
     // Route::get('sales-toko', 'SalesTokoController@create');
 });
