@@ -5,4 +5,4 @@ Berikut adalah e-commerce dari Atalla, sebuah perusahaan yang bergerak di bidang
 ## Screenshot tampilan
 
 1. Login
-![Image of Yaktocat](https://github.com/ariqd/shop/screenshot/1-login.png)
+![Login](https://github.com/ariqd/shop/blob/master/screenshot/1-home.png)
