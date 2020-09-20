@@ -25,7 +25,9 @@ class ProductsController extends Controller
     {
         $product = Product::where('slug', $slug)->first();
 
-        $colors = $product->stocks()->get(['color', 'qty'])->groupBy('color')->toArray();
+        $colors = $product->stocks()
+            ->where('qty', '>', 0)
+            ->get(['id', 'color', 'size', 'qty'])->groupBy('color')->toArray();
 
         // dd($colors);
 

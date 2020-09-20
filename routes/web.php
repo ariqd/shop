@@ -4,8 +4,9 @@ Auth::routes();
 
 Route::group(['namespace' => 'Customer', 'name' => 'front.'], function () {
     Route::get('/', 'HomeController@index');
-    Route::get('/{slug?}', 'ProductsController@index');
     Route::get('/detail/{slug?}', 'ProductsController@show');
+    Route::resource('cart', 'CartController');
+    Route::get('/{slug?}', 'ProductsController@index');
 });
 
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
