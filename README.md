@@ -1,6 +1,6 @@
 # Mini e-commerce berbasis Web
 
-Berikut adalah e-commerce dari Atalla, sebuah perusahaan yang bergerak di bidang konveksi dan penjualan busana muslim wanita.
+Berikut adalah e-commerce dari Atalla, sebuah UMKM yang bergerak di bidang konveksi dan penjualan busana muslim wanita.
 
 ## Screenshot tampilan
 
