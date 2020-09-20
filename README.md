@@ -2,6 +2,13 @@
 
 Berikut adalah e-commerce dari Atalla, sebuah UMKM yang bergerak di bidang konveksi dan penjualan busana muslim wanita.
 
+## Instalasi
+
+1. Clone repo
+```
+https://github.com/ariqd/shop.git
+```
+
 ## Screenshot tampilan
 
 ### Customer
