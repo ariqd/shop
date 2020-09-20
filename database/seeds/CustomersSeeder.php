@@ -15,6 +15,6 @@ class CustomersSeeder extends Seeder
             'name' => 'Pembeli Retail'
         ]);
 
-        factory(App\Customer::class, 10)->create();
+        // factory(App\Customer::class, 10)->create();
     }
 }
