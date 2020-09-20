@@ -1,6 +1,6 @@
 # Mini e-commerce berbasis Web
 
-Berikut adalah e-commerce dari Atalla, sebuah perusahaan yang bergerak di bidang konveksi dan penjualan busana muslim wanita.
+Berikut adalah e-commerce dari Atalla, sebuah UMKM yang bergerak di bidang konveksi dan penjualan busana muslim wanita.
 
 ## Screenshot tampilan
 
@@ -17,7 +17,7 @@ Setelah login:
 3. Login
 ![Login](https://github.com/ariqd/shop/blob/master/screenshot/3-login.png)
 
-4. Reset password
+4. Reset password <br/>
 ![reset](https://github.com/ariqd/shop/blob/master/screenshot/4-reset.png)
 
 5. Melihat barang per kategori
