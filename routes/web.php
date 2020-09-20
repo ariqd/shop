@@ -5,7 +5,12 @@ Auth::routes();
 Route::group(['namespace' => 'Customer', 'name' => 'front.'], function () {
     Route::get('/', 'HomeController@index');
     Route::get('/detail/{slug?}', 'ProductsController@show');
+    Route::resource('transactions', 'TransactionsController');
+    Route::get('cart/empty', 'CartController@empty');
+    Route::get('find', 'FindController');
     Route::resource('cart', 'CartController');
+    Route::post('checkout', 'CheckoutController@checkout')->name('checkout.process');
+    Route::get('checkout/success', 'CheckoutController@success')->name('checkout.success')->middleware('prevent-back-history');
     Route::get('/{slug?}', 'ProductsController@index');
 });
 
@@ -34,6 +39,12 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::get('sales-toko/search-customer/{id}', 'SalesTokoController@searchCustomer');
     Route::post('sales-toko/cost', 'SalesTokoController@cost');
     Route::post('sales-toko/delete-detail/{id}', 'SalesTokoController@deleteDetail');
+
+    Route::resource('sales-online', 'SalesOnlineController');
+    Route::get('sales-online/search/{id}', 'SalesOnlineController@search');
+    Route::get('sales-online/search-customer/{id}', 'SalesOnlineController@searchCustomer');
+    Route::post('sales-online/cost', 'SalesOnlineController@cost');
+    Route::post('sales-online/delete-detail/{id}', 'SalesOnlineController@deleteDetail');
 
     Route::resource('users', 'UsersController');
     Route::post('users/change-password/{id}', 'UsersController@changePassword');

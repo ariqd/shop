@@ -209,11 +209,8 @@
                                                 <span class="tb-badge tb-box-colo7">CANCEL</span>
                                             @endif
                                         </td>
-                                        <td>                                            
-                                            <a href="{{ route('sales-online.edit', $sale) }}" class="text-info mr-3">
-                                                Edit Progress
-                                            </a>
-                                            {{-- @if($sale->customer_id == 1)
+                                        <td>
+                                            @if($sale->customer_id == 1)
                                                 <a href="{{ route('sales-toko.edit', $sale) }}" class="text-info mr-3">
                                                     Detail
                                                 </a>
@@ -227,7 +224,7 @@
                                                         Detail
                                                     </a>
                                                 @endif
-                                            @endif --}}
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach

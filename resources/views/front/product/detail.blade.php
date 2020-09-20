@@ -14,11 +14,13 @@
             }
 
             var id = event.target.options[event.target.selectedIndex].dataset.id;
-
-            // alert(id)
+            var color = event.target.options[event.target.selectedIndex].dataset.color;
+            var size = event.target.options[event.target.selectedIndex].dataset.size;
 
             document.getElementById('available').innerHTML = 'Tersedia ' + this.value + ' pcs';
             document.getElementById('stock-id').value = id;
+            document.getElementById('stock-color').value = color;
+            document.getElementById('stock-size').value = size;
         });
     </script>
 @endpush
@@ -41,6 +43,8 @@
                     @csrf
 
                     <input type="hidden" name="id" value="" id="stock-id">
+                    <input type="hidden" name="color" value="" id="stock-color">
+                    <input type="hidden" name="size" value="" id="stock-size">
                     <input type="hidden" name="name" value="{{ $product->code .' - ' . $product->name }}">
                     <input type="hidden" name="price" value="{{ $product->price }}">
 
@@ -56,7 +60,13 @@
                                     @foreach ($colors as $key => $sizes)
                                     <optgroup label="{{ $key }}">
                                         @foreach ($sizes as $size)
-                                            <option value="{{ $size['qty'] }}" data-id="{{ $size['id'] }}">{{ $size['color'] }} - {{ $size['size'] }}</option>
+                                            <option value="{{ $size['qty'] }}" 
+                                            data-id="{{ $size['id'] }}"
+                                            data-size="{{ $size['size'] }}"
+                                            data-color="{{ $size['color'] }}"
+                                            >
+                                                {{ $size['color'] }} - {{ $size['size'] }}
+                                            </option>
                                         @endforeach
                                       </optgroup>
                                     @endforeach
@@ -74,7 +84,7 @@
                             <label for="qty">Qty</label>
                         </div>
                         <div class="w-5/6">
-                            <input id="qty" name="qty" class="bg-gray-100 focus:outline-none focus:shadow-outline border border-gray-400 rounded-lg py-2 px-4 block appearance-none leading-normal" type="number">
+                            <input id="qty" name="qty" value="1" class="bg-gray-100 focus:outline-none focus:shadow-outline border border-gray-400 rounded-lg py-2 px-4 block appearance-none leading-tight" type="number">
                         </div>
                     </div>
 

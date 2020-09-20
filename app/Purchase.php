@@ -8,6 +8,11 @@ class Purchase extends Model
 {
     protected $guarded = ['id'];
 
+    public function buyer()
+    {
+        return $this->belongsTo('App\User', 'sales_id');
+    }
+
     public function customer()
     {
         return $this->belongsTo('App\Customer');

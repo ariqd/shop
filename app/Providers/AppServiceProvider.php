@@ -5,7 +5,7 @@ namespace App\Providers;
 use App\Category;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-use Cart;
+// use App\Cate
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,6 +27,5 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         View::share('headerCategories', Category::orderBy('name')->get());
-        View::share('cartCount', Cart::content()->count());
     }
 }

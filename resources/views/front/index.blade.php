@@ -28,9 +28,9 @@
                                 <path d="M7 11H17V13H7zM4 7H20V9H4zM10 15H14V17H10z" />
                             </svg>
                         </a> --}}
-                        <form class="w-full max-w-sm">
+                        <form class="w-full max-w-sm" action="{{ url('find') }}" method="GET">
                             <div class="flex items-center border-b border-gray-800 py-2">
-                                <input class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Cari kode / nama produk" aria-label="Full name">
+                                <input name="q" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Cari kode / nama produk" aria-label="Full name">
                                 <button class="flex-shrink-0 border-transparent border-4 text-gray-500 hover:text-gray-800 text-sm py-1 px-2 rounded" type="button">
                                     <svg class="fill-current hover:text-black" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
                                         <path d="M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z" />
