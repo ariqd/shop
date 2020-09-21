@@ -11,6 +11,8 @@ Berikut adalah e-commerce dari Atalla, sebuah UMKM yang bergerak di bidang konve
 5. `php artisan migrate --seed`
 6. `php artisan serve`
 
+Login owner: owner@atalla.com:password
+
 ## Screenshot tampilan
 
 ### Customer
