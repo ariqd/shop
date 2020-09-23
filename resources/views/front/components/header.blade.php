@@ -25,7 +25,7 @@
 
         <div class="order-1 md:order-2 w-1/3">
             <a class="flex items-center justify-start md:justify-center tracking-widest no-underline hover:no-underline font-bold text-gray-800 hover:text-gray-700 text-2xl " href="{{ url('/') }}">
-                <img src="{{ asset('img/logo2.png') }}" class="md:w-1/4 w-2/3 md:h-10" alt="logo-light" />
+                <img src="{{ asset('img/logo2.png') }}" class="md:w-1/5 w-2/3 md:h-8 " alt="logo-light" />
             </a>
         </div>
 

@@ -109,7 +109,23 @@ class CartController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedRequest = $request->validate([
+            'qty' => ['required', 'numeric', 'min:0'],
+        ]);
+
+        if ($validatedRequest['qty'] == 0) {
+            Cart::remove($id);
+
+            return redirect()->route('cart.index')->with('success', 'Produk berhasil dihapus');
+        }
+
+        $item = Cart::update($id, $validatedRequest['qty']);
+
+        if ($item) {
+            return redirect()->back()->with('success', 'Jumlah ' . $item->name . ' berhasil diubah menjadi ' . $validatedRequest['qty']);
+        }
+
+        return redirect()->back()->withErrors('Jumlah ' . $item->name . ' gagal diubah');
     }
 
     /**
@@ -120,7 +136,9 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Cart::remove($id);
+
+        return redirect()->back()->with('success', 'Produk berhasil dihapus');
     }
 
     public function empty()
