@@ -2,6 +2,17 @@
 
 Berikut adalah e-commerce dari Atalla, sebuah UMKM yang bergerak di bidang konveksi dan penjualan busana muslim wanita.
 
+## Instalasi
+
+1. Clone repo: `git clone https://github.com/ariqd/shop.git`
+2. `composer install`
+3. `npm install && npm run dev`
+4. Create `.env` file dan setup database 
+5. `php artisan migrate --seed`
+6. `php artisan serve`
+
+Login owner: owner@atalla.com:password
+
 ## Screenshot tampilan
 
 ### Customer
