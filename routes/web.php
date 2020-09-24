@@ -1,24 +1,34 @@
 <?php
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::group(['namespace' => 'Customer', 'name' => 'front.'], function () {
+Route::group(['namespace' => 'Customer', 'as' => 'front.'], function () {
     Route::get('/', 'HomeController@index');
+
     Route::get('/detail/{slug?}', 'ProductsController@show');
+
     Route::resource('transactions', 'TransactionsController');
-    Route::get('cart/empty', 'CartController@empty');
+
+    Route::get('address/search-cities/{id}', 'AddressController@searchCities');
+    Route::resource('address', 'AddressController');
+
     Route::get('find', 'FindController');
+
+    Route::get('cart/empty', 'CartController@empty');
+    Route::post('cart/cost', 'CartController@cost');
     Route::resource('cart', 'CartController');
-    Route::post('checkout', 'CheckoutController@checkout')->name('checkout.process');
-    Route::get('checkout/success', 'CheckoutController@success')->name('checkout.success')->middleware('prevent-back-history');
+
+    Route::post('checkout', 'CheckoutController@checkout')->name('checkout.process')->middleware('verified');
+    Route::get('checkout/success', 'CheckoutController@success')->name('checkout.success')->middleware('verified', 'prevent-back-history');
+
     Route::get('/{slug?}', 'ProductsController@index');
 });
 
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::get('/dashboard', 'HomeController@index')->name('home');
 
-    // Route::resource('customers', 'CustomersController');
-    // Route::get('customers/search-cities/{id}', 'CustomersController@searchCities');
+    Route::resource('customers', 'CustomersController');
+    Route::get('customers/search-cities/{id}', 'CustomersController@searchCities');
 
     Route::resource('products', 'ProductsController');
     Route::put('products/update-stock/{product}', 'ProductsController@updateStock')->name('products.update.stock');

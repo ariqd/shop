@@ -31,7 +31,7 @@
 
         <div class="order-2 md:order-3 flex items-center w-1/3 justify-end text-gray-700" id="nav-content">
             
-            <a class="pr-4 md:pr-6 flex no-underline hover:text-black" href="{{ route('cart.index') }}">
+            <a class="pr-4 md:pr-6 flex no-underline hover:text-black" href="{{ route('front.cart.index') }}">
                 <svg class="fill-current text-gray-800 mr-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                     <path d="M5,22h14c1.103,0,2-0.897,2-2V9c0-0.553-0.447-1-1-1h-3V7c0-2.757-2.243-5-5-5S7,4.243,7,7v1H4C3.447,8,3,8.447,3,9v11 C3,21.103,3.897,22,5,22z M9,7c0-1.654,1.346-3,3-3s3,1.346,3,3v1H9V7z M5,10h2v2h2v-2h6v2h2v-2h2l0.002,10H5V10z" />
                 </svg>
@@ -69,8 +69,13 @@
                                 <nav>
                                     <ul class="text-base">
                                         <li>
-                                            <a class="w-full inline-block no-underline hover:text-black hover:underline py-2 px-4" href="{{ route('transactions.index') }}">
+                                            <a class="w-full inline-block no-underline hover:text-black hover:underline py-2 px-4" href="{{ route('front.transactions.index') }}">
                                                 Transaksi
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="w-full inline-block no-underline hover:text-black hover:underline py-2 px-4" href="{{ route('front.address.index') }}">
+                                                Alamat
                                             </a>
                                         </li>
                                         <li>

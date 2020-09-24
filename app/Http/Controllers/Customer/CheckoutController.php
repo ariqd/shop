@@ -20,9 +20,12 @@ class CheckoutController extends Controller
             return redirect('login')->withInfo('Harap Masuk atau Daftar untuk melanjutkan');
         }
 
-        $data = $request->all();
-
-        // dd($data);
+        $data = $request->validate([
+            'courier_fee' => 'required|numeric',
+            'courier_name' => 'required|string',
+            'courier_service_name' => 'required|string',
+            'subtotal' => 'required|numeric',
+        ]);
 
         $counter = Counter::where("name", "=", "SO")->first();
         $no_so = "SO" . date("ymd") . str_pad(Auth::id(), 2, 0, STR_PAD_LEFT) . str_pad($counter->counter, 5, 0, STR_PAD_LEFT);
@@ -45,10 +48,12 @@ class CheckoutController extends Controller
             // 'customer_id' => $data['customer_id'],
             'sales_id' => Auth::id(),
             'purchase_no' => $no_so,
-            'courier_name' => '-',
-            'courier_fee' => 10000,
+            'courier_name' => $data['courier_name'],
+            'courier_service_name' => $data['courier_service_name'],
+            'courier_fee' => $data['courier_fee'],
             'discount' => 0,
             'status' => 'BELUM LUNAS',
+            'weight' => 1,
             'total' => str_replace('.', '', Cart::total())
         ]);
 
@@ -79,7 +84,7 @@ class CheckoutController extends Controller
                 ]);
             }
 
-            return redirect()->route('checkout.success')->with([
+            return redirect()->route('front.checkout.success')->with([
                 'info' => 'Pembelian berhasil!',
                 'from-checkout' => TRUE,
             ]);

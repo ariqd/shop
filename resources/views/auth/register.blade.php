@@ -20,22 +20,23 @@
 <body class="tb-white-bg">
     <div class="tb-login-wrap tb-style1 tb-bg tb-dynamicbg" data-src="{{ asset('assets') }}/img/signup/03.jpg">
         <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <a class="tb-form-logo " href="{{ url('/') }}">
+                        <img src="{{ asset('img/logo2.png') }}" alt="logo" width="120">
+                        <h5 class="mt-3">Register</h5>
+                    </a>
+                    <div class="tb-height-b25 tb-height-lg-b25"></div>
+                    @if (session('info'))
+                        <div class="alert alert-info text-left">
+                            {{session('info')}}
+                        </div>
+                    @endif
+                </div>
+            </div>
             <div class=" row justify-content-center">
                 <div class=" card card-body col-lg-8">
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <a class="tb-form-logo " href="{{ url('/') }}">
-                                <img src="{{ asset('img/logo2.png') }}" alt="logo" width="120">
-                                <h5 class="mt-4">Register</h5>
-                            </a>
-                            <div class="tb-height-b25 tb-height-lg-b25"></div>
-                            @if (session('info'))
-                                <div class="alert alert-info text-left">
-                                    {{session('info')}}
-                                </div>
-                            @endif
-                        </div>
-                    </div>
+                    
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 

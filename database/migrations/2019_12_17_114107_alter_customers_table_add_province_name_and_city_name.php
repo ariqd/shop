@@ -14,8 +14,8 @@ class AlterCustomersTableAddProvinceNameAndCityName extends Migration
     public function up()
     {
         Schema::table('customers', function (Blueprint $table) {
-            $table->string('province_name')->default('Jawa Barat')->after('province_id');
-            $table->string('city_name')->default('Bandung')->after('city_id');
+            $table->string('province_name')->nullable()->after('province_id');
+            $table->string('city_name')->nullable()->after('city_id');
         });
     }
 

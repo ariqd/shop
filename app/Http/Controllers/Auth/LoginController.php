@@ -45,6 +45,9 @@ class LoginController extends Controller
         }
 
         if ($user->role == 'customer') {
+            // if ($user->) {
+
+            // }
             return redirect('/');
         }
 

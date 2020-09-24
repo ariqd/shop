@@ -11,10 +11,20 @@ class CustomersSeeder extends Seeder
      */
     public function run()
     {
-        App\Customer::create([
-            'name' => 'Pembeli Retail'
+        $user = App\User::create([
+            'name' => 'Pembeli Retail',
+            'role' => 'customer'
         ]);
 
-        // factory(App\Customer::class, 10)->create();
+        App\Customer::create([
+            'user_id' => $user->id,
+            'address' => null,
+            'province_id' => 9,
+            'province_name' => 'Jawa Barat',
+            'city_id' => 23,
+            'city_name' => 'Bandung',
+            'phone' => null,
+            'status' => 'Customer',
+        ]);
     }
 }

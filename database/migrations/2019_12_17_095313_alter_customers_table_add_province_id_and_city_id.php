@@ -15,8 +15,8 @@ class AlterCustomersTableAddProvinceIdAndCityId extends Migration
     {
         Schema::table('customers', function (Blueprint $table) {
             $table->dropColumn('city');
-            $table->integer('province_id')->default(9)->after('address');
-            $table->integer('city_id')->default(23)->after('province_id');
+            $table->integer('province_id')->nullable()->after('address');
+            $table->integer('city_id')->nullable()->after('province_id');
         });
     }
 

@@ -4,8 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-    <title>@yield('title') &bull; {{ env('APP_NAME') }}</title>
+    <title>@yield('title') &bull; Atalla</title>
 
     <!-- Fonts -->
     {{-- <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"> --}}
@@ -19,12 +20,33 @@
 
     </style>
 
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.min.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets') }}/css/font-awesome.min.css" />
 
     @stack('css')
+
+    <style>
+        .loading {
+            background: lightgrey;
+            padding: 15px;
+            position: fixed;
+            border-radius: 4px;
+            left: 50%;
+            top: 50%;
+            text-align: center;
+            margin: -40px 0 0 -50px;
+            z-index: 2000;
+            display: none;
+        }
+
+    </style>
 </head>
 
 <body class="bg-white text-gray-600 work-sans leading-normal text-base tracking-normal">
+    <div class="loading" id="loading">
+        <i class="fas fa-sync fa-spin fa-2x fa-fw"></i><br />
+        <span>Loading</span>
+    </div>
+
     @include('front.components.header')
 
     <main class="min-h-screen relative">
@@ -60,7 +82,7 @@
 
         @yield('content')
 
-        <footer class="absolute bottom-0 flex justify-center w-full py-8">
+        <footer class="absolute bottom-0 flex justify-center w-full py-8 mt-12">
             <div>
                 &copy;2020 - CV Atalla Putra Mandiri
             </div>
@@ -68,6 +90,7 @@
 
     </main>
 
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.min.js" defer></script>
     @stack('js')
 
 </body>
